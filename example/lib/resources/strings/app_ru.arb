@@ -1,0 +1,71 @@
+{
+  "@@locale": "ru",
+  "home_title": "Прогноз погоды",
+  "loading_weather": "Загрузка прогноза погоды...",
+  "error": "Ошибка...",
+  "geo_error": "Нет доступа к геолокации. Включите GPS и попробуйте снова.",
+  "retry": "Повторить",
+  "common_absent_date": "Дата отсутствует",
+  "common_absent_day": "День отсутствует",
+  "common_absent_time": "Время отсутствует",
+  "error_timeout": "Время соединения вышло",
+  "error_no_internet": "Проверьте соединение с интернетом",
+  "error_server": "Ошибка сервера: {statusCode}",
+  "@error_server": {
+    "placeholders": {
+      "statusCode": {
+        "type": "int"
+      }
+    }
+  },
+  "error_bad_response": "Неверный ответ сервера: {statusCode}",
+  "@error_bad_response": {
+    "placeholders": {
+      "statusCode": {
+        "type": "int"
+      }
+    }
+  },
+  "error_cancelled": "Запрос отменен",
+  "error_unknown": "Неизвестная ошибка сети",
+  "error_parsing": "Ошибка парсинга данных",
+  "error_no_data": "Нет данных",
+  "error_load_failed": "Ошибка загрузки данных",
+  "error_config": "Ошибка конфигурации приложения",
+  "error_invalid_data": "Ошибка обработки данных",
+  "error_gps_disabled": "Включите GPS в настройках устройства",
+  "error_location_timeout": "Время ожидания геолокации истекло",
+  "common_unknown_city_name": "Неизвестное название города",
+  "current_location": "Текущее местоположение",
+  "temperature_format": "{temp}°C",
+  "@temperature_format": {
+    "placeholders": {
+      "temp": {
+        "type": "String"
+      }
+    }
+  },
+  "temperature_range": "{min}°C - {max}°C",
+  "@temperature_range": {
+    "placeholders": {
+      "min": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      }
+    }
+  },
+  "app_bar_subtitle": "{cityName} • Обновлено: {date}",
+  "@app_bar_subtitle": {
+    "placeholders": {
+      "cityName": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "map_osm_attribution": "© OpenStreetMap contributors"
+}
