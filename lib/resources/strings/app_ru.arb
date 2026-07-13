@@ -37,7 +37,7 @@
       }
     }
   },
-  "app_bar_subtitle": "Обновлено: {date}",
+  "app_bar_subtitle": "Новости от {date}",
   "@app_bar_subtitle": {
     "placeholders": {
       "date": {
