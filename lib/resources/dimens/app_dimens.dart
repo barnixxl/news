@@ -12,7 +12,5 @@ class AppDimens {
   static const double iconXl = 64;
 
   static const double radiusMd = 16;
-  static const double newsImageHeight = 160;
-  static const double newsCardElevation = 2;
   static const double appBarBottomHeight = 40;
 }
