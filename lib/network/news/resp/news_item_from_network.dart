@@ -15,8 +15,6 @@ class NewsItemFromNetwork {
   @JsonKey(name: 'is_technical_work')
   final bool? isTechnicalWork;
 
-  final String? img;
-
   @JsonKey(name: 'start_date')
   final DateTime? startDate;
 
@@ -26,7 +24,6 @@ class NewsItemFromNetwork {
     this.nameRu,
     this.htmlRu,
     this.isTechnicalWork,
-    this.img,
     this.startDate,
     this.link,
   });
@@ -41,7 +38,6 @@ class NewsItemFromNetwork {
       'nameRu: $nameRu,'
       'htmlRu: $htmlRu,'
       'isTechnicalWork: $isTechnicalWork,'
-      'img: $img,'
       'startDate: $startDate,'
       'link: $link'
       ')';

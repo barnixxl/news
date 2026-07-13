@@ -3,7 +3,6 @@ import '../network/news/resp/news_item_from_network.dart';
 class NewsItem {
   final String title;
   final String htmlContent;
-  final String? imageUrl;
   final DateTime? startDate;
   final String? link;
   final bool isTechnicalWork;
@@ -11,7 +10,6 @@ class NewsItem {
   const NewsItem({
     required this.title,
     required this.htmlContent,
-    this.imageUrl,
     this.startDate,
     this.link,
     this.isTechnicalWork = false,
@@ -23,7 +21,6 @@ class NewsItem {
     return NewsItem(
       title: item.nameRu ?? '',
       htmlContent: item.htmlRu ?? '',
-      imageUrl: item.img,
       startDate: item.startDate,
       link: item.link,
       isTechnicalWork: item.isTechnicalWork ?? false,
