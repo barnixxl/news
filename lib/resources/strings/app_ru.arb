@@ -28,7 +28,6 @@
   "error_parsing": "Ошибка парсинга данных",
   "error_no_data": "Нет данных",
   "error_load_failed": "Ошибка загрузки данных",
-  "error_config": "Ошибка конфигурации приложения",
   "news_date_format": "Опубликовано: {date}",
   "@news_date_format": {
     "placeholders": {

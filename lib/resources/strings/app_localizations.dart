@@ -178,12 +178,6 @@ abstract class AppLocalizations {
   /// **'Ошибка загрузки данных'**
   String get error_load_failed;
 
-  /// No description provided for @error_config.
-  ///
-  /// In ru, this message translates to:
-  /// **'Ошибка конфигурации приложения'**
-  String get error_config;
-
   /// No description provided for @news_date_format.
   ///
   /// In ru, this message translates to:

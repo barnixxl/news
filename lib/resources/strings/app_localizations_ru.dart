@@ -55,9 +55,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get error_load_failed => 'Ошибка загрузки данных';
 
   @override
-  String get error_config => 'Ошибка конфигурации приложения';
-
-  @override
   String news_date_format(String date) {
     return 'Опубликовано: $date';
   }
