@@ -30,7 +30,7 @@ class NewsItemWidget extends StatelessWidget {
           Text(
             newsItem.title,
             style: const TextStyle(
-              color: AppColors.onPrimary,
+              color: AppColors.primary,
               fontSize: AppDimens.fontMd,
               fontWeight: FontWeight.bold,
             ),
