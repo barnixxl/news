@@ -37,5 +37,12 @@
       }
     }
   },
-  "app_bar_subtitle": "Новости Беларусбанка"
+  "app_bar_subtitle": "Обновлено: {date}",
+  "@app_bar_subtitle": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  }
 }

@@ -62,7 +62,7 @@ abstract class AppLocalizations {
 
   String news_date_format(String date);
 
-  String get app_bar_subtitle;
+  String app_bar_subtitle(String date);
 }
 
 class _AppLocalizationsDelegate

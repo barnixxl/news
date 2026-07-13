@@ -58,5 +58,7 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get app_bar_subtitle => 'Новости Беларусбанка';
+  String app_bar_subtitle(String date) {
+    return 'Обновлено: $date';
+  }
 }
