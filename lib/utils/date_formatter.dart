@@ -6,9 +6,7 @@ extension DateTimeFormattingUtil on DateTime? {
   String? toDayMonthYearTextDateFormat() {
     final self = this;
     if (self != null) {
-      return dayMonthYearTextDateFormat.format(
-        self,
-      );
+      return dayMonthYearTextDateFormat.format(self);
     }
     return null;
   }

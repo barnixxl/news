@@ -8,16 +8,11 @@ import '../../repository/news_repository.dart';
 class HomeController {
   final NewsRepository _repository = NewsRepository.getInstance();
 
-  final Observable<NewsResult<List<NewsItem>>> _newsResult = Observable(
-    NewsResult.notInitialized(),
-  );
+  final Observable<NewsResult<List<NewsItem>>> _newsResult = Observable(NewsResult.notInitialized());
 
-  final Observable<DateTime?> _lastUpdateDate = Observable(
-    null,
-  );
+  final Observable<DateTime?> _lastUpdateDate = Observable(null);
 
-  List<NewsItem> get news => _newsResult.value.data?.where((e) =>
-  e.link.isNotEmpty).toList() ?? [];
+  List<NewsItem> get news => _newsResult.value.data?.where((e) => e.link.isNotEmpty).toList() ?? [];
 
   NewsResult<List<NewsItem>> get result => _newsResult.value;
 
@@ -32,20 +27,12 @@ class HomeController {
   bool get hasSuccess => result.isSuccess;
 
   Future<void> onRefreshPressed() async {
-    _setState(
-      NewsResult.loading(
-        data: _newsResult.value.data,
-      ),
-    );
+    _setState(NewsResult.loading(data: _newsResult.value.data));
     final result = await _repository.fetchNews();
-    _setState(
-      result,
-    );
+    _setState(result);
   }
 
-  void _setState(
-      NewsResult<List<NewsItem>> value,
-      ) {
+  void _setState(NewsResult<List<NewsItem>> value) {
     runInAction(() {
       _newsResult.value = value;
       if (value.isSuccess) {
