@@ -10,13 +10,11 @@ class HomeController {
 
   final Observable<NewsResult<List<NewsItem>>> _newsResult = Observable(NewsResult.notInitialized());
 
-  final Observable<DateTime?> _lastUpdateDate = Observable(null);
-
   List<NewsItem> get news => _newsResult.value.data ?? [];
 
   NewsResult<List<NewsItem>> get result => _newsResult.value;
 
-  DateTime? get lastUpdateDate => _lastUpdateDate.value;
+  DateTime? get lastUpdateDate => _lastUpdateDateFromData(_newsResult.value.data);
 
   NewsError? get error => _newsResult.value.error;
 
@@ -32,12 +30,16 @@ class HomeController {
     _setState(result);
   }
 
+  DateTime? _lastUpdateDateFromData(List<NewsItem>? data) {
+    if (data != null && data.isNotEmpty) {
+      return data.first.startDate;
+    }
+    return null;
+  }
+
   void _setState(NewsResult<List<NewsItem>> value) {
     runInAction(() {
       _newsResult.value = value;
-      if (value.isSuccess) {
-        _lastUpdateDate.value = DateTime.now();
-      }
     });
   }
 }
