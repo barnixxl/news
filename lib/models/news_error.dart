@@ -23,7 +23,7 @@ class NewsError {
     if (e is NewsError) {
       return e;
     }
-    return NewsError(errorCode: unknownCode, errorMessage: strings.error_unknown);
+    return NewsError(errorCode: unknownCode, errorMessage: e.toString());
   }
 
   factory NewsError.timeout() => NewsError(errorCode: timeoutCode, errorMessage: strings.error_timeout);
