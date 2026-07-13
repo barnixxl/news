@@ -4,32 +4,28 @@ class NewsItem {
   final String title;
   final String htmlContent;
   final DateTime? startDate;
-  final String? link;
+  final String link;
   final bool isTechnicalWork;
 
   const NewsItem({
     required this.title,
     required this.htmlContent,
     this.startDate,
-    this.link,
+    required this.link,
     this.isTechnicalWork = false,
   });
 
-  static NewsItem fromNetworkModel(
-    NewsItemFromNetwork item,
-  ) {
+  static NewsItem fromNetworkModel(NewsItemFromNetwork item) {
     return NewsItem(
       title: item.nameRu ?? '',
       htmlContent: item.htmlRu ?? '',
       startDate: item.startDate,
-      link: item.link,
+      link: item.link ?? '',
       isTechnicalWork: item.isTechnicalWork ?? false,
     );
   }
 
-  static List<NewsItem> fromNetworkList(
-    List<NewsItemFromNetwork> items,
-  ) {
+  static List<NewsItem> fromNetworkList(List<NewsItemFromNetwork> items) {
     return items.map((e) => NewsItem.fromNetworkModel(e)).toList();
   }
 }

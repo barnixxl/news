@@ -17,7 +17,7 @@ class HomeController {
   );
 
   List<NewsItem> get news =>
-      _newsResult.value.data ?? [];
+      _newsResult.value.data?.where((e) => e.link.isNotEmpty).toList() ?? [];
 
   NewsResult<List<NewsItem>> get result => _newsResult.value;
 
