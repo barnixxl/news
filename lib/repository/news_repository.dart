@@ -35,22 +35,29 @@ class NewsRepository extends BaseRepository {
     return result;
   }
 
-  List<NewsItem> _sortByDate(List<NewsItem> items) {
-    final sorted = List<NewsItem>.from(items);
-    sorted.sort((a, b) {
-      final aDt = a.startDate;
-      final bDt = b.startDate;
-      if (aDt == null && bDt == null) {
-        return 0;
-      }
-      if (aDt == null) {
-        return 1;
-      }
-      if (bDt == null) {
-        return -1;
-      }
-      return bDt.compareTo(aDt);
-    });
-    return sorted;
+  List<NewsItem> _sortByDate(List<NewsItem>? items) {
+    if (items != null) {
+      final filtered = items.where(_isValidNewsItem).toList();
+      filtered.sort(_byDateDesc);
+      return filtered;
+    }
+    return [];
+  }
+
+  bool _isValidNewsItem(NewsItem item) => item.link.isNotEmpty && !item.isTechnicalWork;
+
+  int _byDateDesc(NewsItem a, NewsItem b) {
+    final aDt = a.startDate;
+    final bDt = b.startDate;
+    if (aDt == null && bDt == null) {
+      return 0;
+    }
+    if (aDt == null) {
+      return 1;
+    }
+    if (bDt == null) {
+      return -1;
+    }
+    return bDt.compareTo(aDt);
   }
 }
