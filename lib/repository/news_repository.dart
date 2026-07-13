@@ -42,5 +42,30 @@ class NewsRepository extends BaseRepository {
     }
     return result;
   }
+
+  List<NewsItem> _sortByDate(
+    List<NewsItem> items,
+  ) {
+    final sorted = List<NewsItem>.from(items);
+    sorted.sort(
+      (
+        a,
+        b,
+      ) {
+        final aDt = a.startDate;
+        final bDt = b.startDate;
+        if (aDt == null && bDt == null) {
+          return 0;
+        }
+        if (aDt == null) {
+          return 1;
+        }
+        if (bDt == null) {
+          return -1;
+        }
+        return bDt.compareTo(aDt);
+      },
+    );
+    return sorted;
   }
 }
