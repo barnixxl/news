@@ -24,7 +24,7 @@ class HomeController {
 
   bool get hasSuccess => result.isSuccess;
 
-  Future<void> onRefreshPressed() async {
+  Future<void> loadNews() async {
     _setState(NewsResult.loading(data: _newsResult.value.data));
     final result = await _repository.fetchNews();
     _setState(result);
