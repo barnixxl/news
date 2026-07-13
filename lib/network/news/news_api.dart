@@ -26,11 +26,8 @@ class NewsApi {
   }
 
   Future<NewsResult<List<NewsItem>>> fetchNews() async {
-    if (AppConfig.language.isNotEmpty) {
-      final result = await _network.get<List<dynamic>>('news_info', queryParameters: _buildQueryParams());
-      return _processNetworkResult(result);
-    }
-    return NewsResult.failure(NewsError.configError());
+    final result = await _network.get<List<dynamic>>('news_info', queryParameters: _buildQueryParams());
+    return _processNetworkResult(result);
   }
 
   Map<String, String> _buildQueryParams() {
