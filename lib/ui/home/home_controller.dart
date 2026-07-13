@@ -12,17 +12,15 @@ class HomeController {
 
   List<NewsItem> get news => _newsResult.value.data ?? [];
 
-  NewsResult<List<NewsItem>> get result => _newsResult.value;
-
   DateTime? get lastUpdateDate => _lastUpdateDateFromData(_newsResult.value.data);
 
   NewsError? get error => _newsResult.value.error;
 
-  bool get isLoading => result.isLoading;
+  bool get isLoading => _newsResult.value.isLoading;
 
-  bool get hasError => result.isError;
+  bool get hasError => _newsResult.value.isError;
 
-  bool get hasSuccess => result.isSuccess;
+  bool get hasSuccess => _newsResult.value.isSuccess;
 
   Future<void> loadNews() async {
     _setState(NewsResult.loading(data: _newsResult.value.data));
