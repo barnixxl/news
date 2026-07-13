@@ -36,11 +36,7 @@ class NewsApi {
 
   NewsResult<List<NewsItem>> _processNetworkResult(NewsResult<List<dynamic>> result) {
     if (result.isSuccess) {
-      final data = result.data;
-      if (data != null) {
-        return _parseNewsData(data);
-      }
-      return NewsResult.failure(NewsError.loadFailed());
+      return _parseNewsData(result.data ?? const []);
     }
     return NewsResult.failure(result.error ?? NewsError.unknown());
   }
