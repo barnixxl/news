@@ -10,18 +10,12 @@ import '../../common/app_card/app_card_widget.dart';
 
 class NewsItemWidget extends StatelessWidget {
   final NewsItem newsItem;
-  final void Function(String link)? onLinkPressed;
+  final void Function(String)? onLinkPressed;
 
-  const NewsItemWidget({
-    super.key,
-    required this.newsItem,
-    this.onLinkPressed,
-  });
+  const NewsItemWidget({super.key, required this.newsItem, this.onLinkPressed});
 
   @override
-  Widget build(
-      BuildContext context,
-      ) {
+  Widget build(BuildContext context) {
     return AppCardWidget(
       clipContent: true,
       child: Column(
@@ -29,44 +23,27 @@ class NewsItemWidget extends StatelessWidget {
         children: [
           Text(
             newsItem.title,
-            style: const TextStyle(
-              color: AppColors.primary,
-              fontSize: AppDimens.fontMd,
-              fontWeight: FontWeight.bold,
-            ),
+            style: const TextStyle(color: AppColors.primary, fontSize: AppDimens.fontMd, fontWeight: FontWeight.bold),
           ),
           Padding(
-            padding: const EdgeInsets.only(
-              top: 8,
-            ),
+            padding: const EdgeInsets.only(top: 8),
             child: Text(
-              strings.news_date_format(
-                newsItem.startDate.toDayMonthYearTextDateFormat() ?? '',
-              ),
-              style: const TextStyle(
-                color: AppColors.primaryGray,
-                fontSize: AppDimens.fontXs,
-              ),
+              strings.news_date_format(newsItem.startDate.toDayMonthYearTextDateFormat() ?? ''),
+              style: const TextStyle(color: AppColors.primaryGray, fontSize: AppDimens.fontXs),
             ),
           ),
-          const SizedBox(
-            height: 12,
-          ),
+          const SizedBox(height: 12),
           Align(
             alignment: Alignment.centerRight,
             child: TextButton.icon(
-              onPressed: () => onLinkPressed?.call(
-                newsItem.link,
-              ),
+              onPressed: () => onLinkPressed?.call(newsItem.link),
               icon: Image.asset(
                 AppImages.icOpenInNew,
                 width: AppDimens.iconXs,
                 height: AppDimens.iconXs,
                 color: AppColors.primary,
               ),
-              label: Text(
-                strings.read_more,
-              ),
+              label: Text(strings.read_more),
             ),
           ),
         ],
