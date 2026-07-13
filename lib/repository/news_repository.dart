@@ -11,12 +11,8 @@ class NewsRepository extends BaseRepository {
   late final NewsApi _newsApi;
 
   @override
-  void register(
-      GetIt getIt,
-      ) {
-    getIt.registerSingleton<NewsRepository>(
-      this,
-    );
+  void register(GetIt getIt) {
+    getIt.registerSingleton<NewsRepository>(this);
   }
 
   @override
@@ -33,39 +29,28 @@ class NewsRepository extends BaseRepository {
     if (result.isSuccess) {
       final data = result.data;
       if (data != null) {
-        return NewsResult.success(
-          _sortByDate(
-            data.where((e) => !e.isTechnicalWork).toList(),
-          ),
-        );
+        return NewsResult.success(_sortByDate(data));
       }
     }
     return result;
   }
 
-  List<NewsItem> _sortByDate(
-      List<NewsItem> items,
-      ) {
+  List<NewsItem> _sortByDate(List<NewsItem> items) {
     final sorted = List<NewsItem>.from(items);
-    sorted.sort(
-          (
-            a,
-            b,
-          ) {
-        final aDt = a.startDate;
-        final bDt = b.startDate;
-        if (aDt == null && bDt == null) {
-          return 0;
-        }
-        if (aDt == null) {
-          return 1;
-        }
-        if (bDt == null) {
-          return -1;
-        }
-        return bDt.compareTo(aDt);
-      },
-    );
+    sorted.sort((a, b) {
+      final aDt = a.startDate;
+      final bDt = b.startDate;
+      if (aDt == null && bDt == null) {
+        return 0;
+      }
+      if (aDt == null) {
+        return 1;
+      }
+      if (bDt == null) {
+        return -1;
+      }
+      return bDt.compareTo(aDt);
+    });
     return sorted;
   }
 }

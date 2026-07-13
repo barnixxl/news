@@ -12,7 +12,7 @@ class HomeController {
 
   final Observable<DateTime?> _lastUpdateDate = Observable(null);
 
-  List<NewsItem> get news => _newsResult.value.data?.where((e) => e.link.isNotEmpty).toList() ?? [];
+  List<NewsItem> get news => _newsResult.value.data?.where(_isValidNewsItem).toList() ?? [];
 
   NewsResult<List<NewsItem>> get result => _newsResult.value;
 
@@ -31,6 +31,8 @@ class HomeController {
     final result = await _repository.fetchNews();
     _setState(result);
   }
+
+  bool _isValidNewsItem(NewsItem item) => item.link.isNotEmpty && !item.isTechnicalWork;
 
   void _setState(NewsResult<List<NewsItem>> value) {
     runInAction(() {
