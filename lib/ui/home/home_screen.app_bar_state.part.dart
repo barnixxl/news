@@ -22,7 +22,10 @@ Widget _buildAppBarWidget({
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              strings.app_bar_subtitle,
+              strings.app_bar_subtitle(
+                lastUpdateDate?.toDayMonthYearTextDateFormat() ??
+                    strings.common_absent_date,
+              ),
               style: const TextStyle(
                 color: AppColors.onPrimary,
                 fontSize: AppDimens.fontXs,

@@ -6,6 +6,7 @@ import '../../models/news_item.dart';
 import '../../resources/colors/app_colors.dart';
 import '../../resources/dimens/app_dimens.dart';
 import '../../resources/images/app_images/app_images.dart';
+import '../../utils/date_formatter.dart';
 import 'home_controller.dart';
 import 'widgets/news_item_widget.dart';
 
