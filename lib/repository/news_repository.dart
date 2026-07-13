@@ -12,8 +12,8 @@ class NewsRepository extends BaseRepository {
 
   @override
   void register(
-    GetIt getIt,
-  ) {
+      GetIt getIt,
+      ) {
     getIt.registerSingleton<NewsRepository>(
       this,
     );
@@ -44,14 +44,14 @@ class NewsRepository extends BaseRepository {
   }
 
   List<NewsItem> _sortByDate(
-    List<NewsItem> items,
-  ) {
+      List<NewsItem> items,
+      ) {
     final sorted = List<NewsItem>.from(items);
     sorted.sort(
-      (
-        a,
-        b,
-      ) {
+          (
+            a,
+            b,
+          ) {
         final aDt = a.startDate;
         final bDt = b.startDate;
         if (aDt == null && bDt == null) {

@@ -16,8 +16,8 @@ class HomeController {
     null,
   );
 
-  List<NewsItem> get news =>
-      _newsResult.value.data?.where((e) => e.link.isNotEmpty).toList() ?? [];
+  List<NewsItem> get news => _newsResult.value.data?.where((e) =>
+  e.link.isNotEmpty).toList() ?? [];
 
   NewsResult<List<NewsItem>> get result => _newsResult.value;
 
@@ -44,8 +44,8 @@ class HomeController {
   }
 
   void _setState(
-    NewsResult<List<NewsItem>> value,
-  ) {
+      NewsResult<List<NewsItem>> value,
+      ) {
     runInAction(() {
       _newsResult.value = value;
       if (value.isSuccess) {

@@ -20,8 +20,8 @@ class NewsItemWidget extends StatelessWidget {
 
   @override
   Widget build(
-    BuildContext context,
-  ) {
+      BuildContext context,
+      ) {
     return AppCardWidget(
       clipContent: true,
       child: Column(
@@ -36,7 +36,9 @@ class NewsItemWidget extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 8),
+            padding: const EdgeInsets.only(
+              top: 8,
+            ),
             child: Text(
               strings.news_date_format(
                 newsItem.startDate.toDayMonthYearTextDateFormat() ?? '',
@@ -53,7 +55,9 @@ class NewsItemWidget extends StatelessWidget {
           Align(
             alignment: Alignment.centerRight,
             child: TextButton.icon(
-              onPressed: () => onLinkPressed?.call(newsItem.link),
+              onPressed: () => onLinkPressed?.call(
+                newsItem.link,
+              ),
               icon: Image.asset(
                 AppImages.icOpenInNew,
                 width: AppDimens.iconXs,

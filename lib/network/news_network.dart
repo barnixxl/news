@@ -11,8 +11,8 @@ class NewsNetwork {
   late final Dio _dio;
 
   void register(
-    GetIt getIt,
-  ) {
+      GetIt getIt,
+      ) {
     getIt.registerSingleton<NewsNetwork>(
       this,
     );
@@ -51,9 +51,9 @@ class NewsNetwork {
   }
 
   Future<NewsResult<T>> get<T>(
-    String path, {
-    Map<String, dynamic>? queryParameters,
-  }) async {
+      String path, {
+        Map<String, dynamic>? queryParameters,
+      }) async {
     try {
       final response = await _dio.get<T>(
         path,
@@ -84,8 +84,8 @@ class NewsNetwork {
   }
 
   NewsError _mapDioError(
-    DioException e,
-  ) {
+      DioException e,
+      ) {
     switch (e.type) {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:

@@ -58,8 +58,8 @@ class NewsApp extends StatelessWidget {
 
   @override
   Widget build(
-    BuildContext context,
-  ) {
+      BuildContext context,
+      ) {
     return MaterialApp(
       locale: const Locale(
         'ru',

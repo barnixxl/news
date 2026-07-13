@@ -24,8 +24,8 @@ class AppCardWidget extends StatelessWidget {
 
   @override
   Widget build(
-    BuildContext context,
-  ) {
+      BuildContext context,
+      ) {
     return Card(
       margin: margin,
       elevation: 0,

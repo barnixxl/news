@@ -40,10 +40,14 @@ class _HomeScreenState extends State<HomeScreen> {
     final homeController = _homeController;
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight + AppDimens.appBarBottomHeight),
+        preferredSize: const Size.fromHeight(
+          kToolbarHeight + AppDimens.appBarBottomHeight,
+        ),
         child: Observer(
           builder: (_) {
-            return _buildAppBarWidget(lastUpdateDate: homeController.lastUpdateDate);
+            return _buildAppBarWidget(
+              lastUpdateDate: homeController.lastUpdateDate,
+            );
           },
         ),
       ),
@@ -53,7 +57,10 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Observer(
               builder: (_) {
-                return Visibility(visible: homeController.isLoading, child: _buildLoadingWidget());
+                return Visibility(
+                  visible: homeController.isLoading,
+                  child: _buildLoadingWidget(),
+                );
               },
             ),
             Observer(
@@ -72,7 +79,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 final news = homeController.news;
                 return Visibility(
                   visible: homeController.hasSuccess,
-                  child: _buildSuccessWidget(news: news, onLinkPressed: _openLink),
+                  child: _buildSuccessWidget(
+                    news: news,
+                    onLinkPressed: _openLink,
+                  ),
                 );
               },
             ),
@@ -86,10 +96,19 @@ class _HomeScreenState extends State<HomeScreen> {
     await _homeController.onRefreshPressed();
   }
 
-  Future<void> _openLink(String link) async {
-    final uri = Uri.tryParse(link);
-    if (uri != null && await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
+  Future<void> _openLink(
+      String link,
+      ) async {
+    final uri = Uri.tryParse(
+      link,
+    );
+    if (uri != null && await canLaunchUrl(
+          uri,
+        )) {
+      await launchUrl(
+        uri,
+        mode: LaunchMode.externalApplication,
+      );
     }
   }
 }
