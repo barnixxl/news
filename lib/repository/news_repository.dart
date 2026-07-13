@@ -27,15 +27,12 @@ class NewsRepository extends BaseRepository {
   Future<NewsResult<List<NewsItem>>> fetchNews() async {
     final result = await _newsApi.fetchNews();
     if (result.isSuccess) {
-      final data = result.data;
-      if (data != null) {
-        return NewsResult.success(_sortByDate(data));
-      }
+      return NewsResult.success(_filterAndSortByDate(result.data));
     }
     return result;
   }
 
-  List<NewsItem> _sortByDate(List<NewsItem>? items) {
+  List<NewsItem> _filterAndSortByDate(List<NewsItem>? items) {
     if (items != null) {
       final filtered = items.where(_isValidNewsItem).toList();
       filtered.sort(_byDateDesc);
