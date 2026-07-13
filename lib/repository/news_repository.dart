@@ -29,6 +29,18 @@ class NewsRepository extends BaseRepository {
   }
 
   Future<NewsResult<List<NewsItem>>> fetchNews() async {
-    return await _newsApi.fetchNews();
+    final result = await _newsApi.fetchNews();
+    if (result.isSuccess) {
+      final data = result.data;
+      if (data != null) {
+        return NewsResult.success(
+          _sortByDate(
+            data.where((e) => !e.isTechnicalWork).toList(),
+          ),
+        );
+      }
+    }
+    return result;
+  }
   }
 }
