@@ -1,4 +1,5 @@
 import 'package:mobx/mobx.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../models/news_error.dart';
 import '../../models/news_item.dart';
@@ -26,6 +27,13 @@ class HomeController {
     _setState(NewsResult.loading(data: _newsResult.value.data));
     final result = await _repository.fetchNews();
     _setState(result);
+  }
+
+  Future<void> openLink(String link) async {
+    final uri = Uri.tryParse(link);
+    if (uri != null && await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
   }
 
   DateTime? _lastUpdateDateFromData(List<NewsItem>? data) {

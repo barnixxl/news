@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../main.dart';
 import '../../models/news_item.dart';
@@ -87,9 +86,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _openLink(String link) async {
-    final uri = Uri.tryParse(link);
-    if (uri != null && await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
+    await _homeController.openLink(link);
   }
 }
