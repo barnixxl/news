@@ -9,9 +9,6 @@ class NewsItemFromNetwork {
   @JsonKey(name: 'name_ru')
   final String? nameRu;
 
-  @JsonKey(name: 'html_ru')
-  final String? htmlRu;
-
   @JsonKey(name: 'is_technical_work')
   final bool? isTechnicalWork;
 
@@ -22,7 +19,6 @@ class NewsItemFromNetwork {
 
   NewsItemFromNetwork({
     this.nameRu,
-    this.htmlRu,
     this.isTechnicalWork,
     this.startDate,
     this.link,
@@ -36,7 +32,6 @@ class NewsItemFromNetwork {
   @override
   String toString() => 'NewsItemFromNetwork('
       'nameRu: $nameRu,'
-      'htmlRu: $htmlRu,'
       'isTechnicalWork: $isTechnicalWork,'
       'startDate: $startDate,'
       'link: $link'
