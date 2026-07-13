@@ -4,6 +4,7 @@ import '../../../main.dart';
 import '../../../models/news_item.dart';
 import '../../../resources/colors/app_colors.dart';
 import '../../../resources/dimens/app_dimens.dart';
+import '../../../utils/date_formatter.dart';
 import '../../common/app_card/app_card_widget.dart';
 
 class NewsItemWidget extends StatelessWidget {
@@ -16,8 +17,8 @@ class NewsItemWidget extends StatelessWidget {
 
   @override
   Widget build(
-    BuildContext context,
-  ) {
+      BuildContext context,
+      ) {
     return AppCardWidget(
       clipContent: true,
       child: Padding(
@@ -35,21 +36,18 @@ class NewsItemWidget extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            if (newsItem.startDate != null)
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 8,
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: Text(
+                strings.news_date_format(
+                  newsItem.startDate.toDayMonthYearTextDateFormat() ?? '',
                 ),
-                child: Text(
-                  strings.news_date_format(
-                    '${newsItem.startDate!.day}.${newsItem.startDate!.month}.${newsItem.startDate!.year}',
-                  ),
-                  style: const TextStyle(
-                    color: AppColors.primaryGray,
-                    fontSize: AppDimens.fontXs,
-                  ),
+                style: const TextStyle(
+                  color: AppColors.primaryGray,
+                  fontSize: AppDimens.fontXs,
                 ),
               ),
+            ),
           ],
         ),
       ),
