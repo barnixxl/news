@@ -24,53 +24,48 @@ class NewsItemWidget extends StatelessWidget {
   ) {
     return AppCardWidget(
       clipContent: true,
-      child: Padding(
-        padding: const EdgeInsets.all(
-          12,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              newsItem.title,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            newsItem.title,
+            style: const TextStyle(
+              color: AppColors.onPrimary,
+              fontSize: AppDimens.fontMd,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Text(
+              strings.news_date_format(
+                newsItem.startDate.toDayMonthYearTextDateFormat() ?? '',
+              ),
               style: const TextStyle(
-                color: AppColors.onPrimary,
-                fontSize: AppDimens.fontMd,
-                fontWeight: FontWeight.bold,
+                color: AppColors.primaryGray,
+                fontSize: AppDimens.fontXs,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Text(
-                strings.news_date_format(
-                  newsItem.startDate.toDayMonthYearTextDateFormat() ?? '',
-                ),
-                style: const TextStyle(
-                  color: AppColors.primaryGray,
-                  fontSize: AppDimens.fontXs,
-                ),
+          ),
+          const SizedBox(
+            height: 12,
+          ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: TextButton.icon(
+              onPressed: () => onLinkPressed?.call(newsItem.link),
+              icon: Image.asset(
+                AppImages.icOpenInNew,
+                width: AppDimens.iconXs,
+                height: AppDimens.iconXs,
+                color: AppColors.primary,
+              ),
+              label: Text(
+                strings.read_more,
               ),
             ),
-            const SizedBox(
-              height: 12,
-            ),
-            Align(
-              alignment: Alignment.centerRight,
-                child: TextButton.icon(
-                  onPressed: () => onLinkPressed?.call(newsItem.link),
-                  icon: Image.asset(
-                    AppImages.icOpenInNew,
-                    width: AppDimens.iconXs,
-                    height: AppDimens.iconXs,
-                    color: AppColors.primary,
-                  ),
-                label: Text(
-                  strings.read_more,
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
