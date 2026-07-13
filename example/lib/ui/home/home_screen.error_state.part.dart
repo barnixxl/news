@@ -1,7 +1,7 @@
 part of 'home_screen.dart';
 
 Widget _buildErrorWidget({
-  required String? errorMessage,
+  required CurrencyError? error,
   required void Function() onRetryPressed,
 }) {
   return Center(
@@ -12,20 +12,19 @@ Widget _buildErrorWidget({
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(
-            AppImages.icErrorOutline,
-            width: AppDimens.iconXl,
-            height: AppDimens.iconXl,
+          const Icon(
+            Icons.error_outline,
+            size: 64,
             color: AppColors.error,
           ),
           const SizedBox(
             height: 16,
           ),
           Text(
-            errorMessage ?? strings.error,
+            error?.errorMessage ?? strings.error,
             textAlign: TextAlign.center,
             style: const TextStyle(
-              fontSize: AppDimens.fontMd,
+              fontSize: 16,
             ),
           ),
           const SizedBox(

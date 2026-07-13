@@ -94,17 +94,29 @@ abstract class AppLocalizations {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[Locale('ru')];
 
+  /// No description provided for @app_title.
+  ///
+  /// In ru, this message translates to:
+  /// **'Конвертер валют'**
+  String get app_title;
+
   /// No description provided for @home_title.
   ///
   /// In ru, this message translates to:
-  /// **'Прогноз погоды'**
+  /// **'Курсы валют НБРБ'**
   String get home_title;
 
-  /// No description provided for @loading_weather.
+  /// No description provided for @updated_at.
   ///
   /// In ru, this message translates to:
-  /// **'Загрузка прогноза погоды...'**
-  String get loading_weather;
+  /// **'Обновлено: {date}'**
+  String updated_at(String date);
+
+  /// No description provided for @loading_currencies.
+  ///
+  /// In ru, this message translates to:
+  /// **'Загрузка курсов валют...'**
+  String get loading_currencies;
 
   /// No description provided for @error.
   ///
@@ -112,17 +124,41 @@ abstract class AppLocalizations {
   /// **'Ошибка...'**
   String get error;
 
-  /// No description provided for @geo_error.
-  ///
-  /// In ru, this message translates to:
-  /// **'Нет доступа к геолокации. Включите GPS и попробуйте снова.'**
-  String get geo_error;
-
   /// No description provided for @retry.
   ///
   /// In ru, this message translates to:
   /// **'Повторить'**
   String get retry;
+
+  /// No description provided for @base_currency_name.
+  ///
+  /// In ru, this message translates to:
+  /// **'Белорусский рубль (BYN)'**
+  String get base_currency_name;
+
+  /// No description provided for @exchange_rate.
+  ///
+  /// In ru, this message translates to:
+  /// **'Курс'**
+  String get exchange_rate;
+
+  /// No description provided for @base_cur_code.
+  ///
+  /// In ru, this message translates to:
+  /// **'BYN'**
+  String get base_cur_code;
+
+  /// No description provided for @base_currency.
+  ///
+  /// In ru, this message translates to:
+  /// **'Базовая валюта'**
+  String get base_currency;
+
+  /// No description provided for @update_date.
+  ///
+  /// In ru, this message translates to:
+  /// **'Дата обновления'**
+  String get update_date;
 
   /// No description provided for @common_absent_date.
   ///
@@ -130,17 +166,36 @@ abstract class AppLocalizations {
   /// **'Дата отсутствует'**
   String get common_absent_date;
 
-  /// No description provided for @common_absent_day.
+  /// No description provided for @common_unknown_currency_name.
   ///
   /// In ru, this message translates to:
-  /// **'День отсутствует'**
-  String get common_absent_day;
+  /// **'Неизвестная валюта'**
+  String get common_unknown_currency_name;
 
-  /// No description provided for @common_absent_time.
+  /// No description provided for @amount_in.
   ///
   /// In ru, this message translates to:
-  /// **'Время отсутствует'**
-  String get common_absent_time;
+  /// **'Сумма в {currency}'**
+  String amount_in(String currency);
+
+  /// No description provided for @common_scale_equals_rate_byn.
+  ///
+  /// In ru, this message translates to:
+  /// **'{scale} {code} = {rate} BYN'**
+  String common_scale_equals_rate_byn(int scale, String code, String rate);
+
+  /// No description provided for @converted_result.
+  ///
+  /// In ru, this message translates to:
+  /// **'{amount} {currencyName} ({currencyCode})'**
+  String converted_result(
+      String amount, String currencyName, String currencyCode);
+
+  /// No description provided for @converted_result_reverse.
+  ///
+  /// In ru, this message translates to:
+  /// **'{amount} {currencyName}'**
+  String converted_result_reverse(String amount, String currencyName);
 
   /// No description provided for @error_timeout.
   ///
@@ -187,7 +242,7 @@ abstract class AppLocalizations {
   /// No description provided for @error_no_data.
   ///
   /// In ru, this message translates to:
-  /// **'Нет данных'**
+  /// **'Нет закэшированных данных'**
   String get error_no_data;
 
   /// No description provided for @error_load_failed.
@@ -195,66 +250,6 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Ошибка загрузки данных'**
   String get error_load_failed;
-
-  /// No description provided for @error_config.
-  ///
-  /// In ru, this message translates to:
-  /// **'Ошибка конфигурации приложения'**
-  String get error_config;
-
-  /// No description provided for @error_invalid_data.
-  ///
-  /// In ru, this message translates to:
-  /// **'Ошибка обработки данных'**
-  String get error_invalid_data;
-
-  /// No description provided for @error_gps_disabled.
-  ///
-  /// In ru, this message translates to:
-  /// **'Включите GPS в настройках устройства'**
-  String get error_gps_disabled;
-
-  /// No description provided for @error_location_timeout.
-  ///
-  /// In ru, this message translates to:
-  /// **'Время ожидания геолокации истекло'**
-  String get error_location_timeout;
-
-  /// No description provided for @common_unknown_city_name.
-  ///
-  /// In ru, this message translates to:
-  /// **'Неизвестное название города'**
-  String get common_unknown_city_name;
-
-  /// No description provided for @current_location.
-  ///
-  /// In ru, this message translates to:
-  /// **'Текущее местоположение'**
-  String get current_location;
-
-  /// No description provided for @temperature_format.
-  ///
-  /// In ru, this message translates to:
-  /// **'{temp}°C'**
-  String temperature_format(String temp);
-
-  /// No description provided for @temperature_range.
-  ///
-  /// In ru, this message translates to:
-  /// **'{min}°C - {max}°C'**
-  String temperature_range(String min, String max);
-
-  /// No description provided for @app_bar_subtitle.
-  ///
-  /// In ru, this message translates to:
-  /// **'{cityName} • Обновлено: {date}'**
-  String app_bar_subtitle(String cityName, String date);
-
-  /// No description provided for @map_osm_attribution.
-  ///
-  /// In ru, this message translates to:
-  /// **'© OpenStreetMap contributors'**
-  String get map_osm_attribution;
 }
 
 class _AppLocalizationsDelegate

@@ -1,61 +1,36 @@
 import 'package:mobx/mobx.dart';
 
-import '../../models/day_weather.dart';
-import '../../models/forecast_data.dart';
-import '../../models/weather_error.dart';
-import '../../models/weather_result.dart';
-import '../../repository/weather_repository.dart';
+import '../../models/currency_error.dart';
+import '../../models/currency_result.dart';
+import '../../models/rate_data.dart';
+import '../../repository/currency_repository.dart';
 
 class HomeController {
-  final WeatherRepository _repository = WeatherRepository.getInstance();
+  final CurrencyRepository _repository = CurrencyRepository.getInstance();
 
-  final Observable<WeatherResult<ForecastData>> _weatherResult = Observable(
-    WeatherResult.notInitialized(),
+  final Observable<CurrencyResult<List<RateData>>> _currencyResult = Observable(
+    CurrencyResult.notInitialized(),
   );
 
-  final Observable<DateTime?> _lastUpdateDate = Observable(
-    null,
-  );
+  bool get isLoading => _currencyResult.value.isLoading;
 
-  List<DayWeather> get dayWeather =>
-      _weatherResult.value.data?.dayWeather ?? [];
+  bool get hasError => _currencyResult.value.isError;
 
-  WeatherResult<ForecastData> get result => _weatherResult.value;
+  bool get hasSuccess => _currencyResult.value.isSuccess;
 
-  DateTime? get lastUpdateDate => _lastUpdateDate.value;
+  List<RateData> get currencies => _currencyResult.value.data ?? [];
 
-  WeatherError? get error => _weatherResult.value.error;
+  DateTime? get lastUpdateDate => currencies.firstOrNull?.date;
 
-  double get latitude => _weatherResult.value.data?.latitude ?? 0.0;
+  CurrencyError? get error => _currencyResult.value.error;
 
-  double get longitude => _weatherResult.value.data?.longitude ?? 0.0;
-
-  String get appBarCityName => _weatherResult.value.data?.cityName ?? '';
-
-  bool get isLoading => result.isLoading;
-
-  bool get hasError => result.isError;
-
-  bool get hasSuccess => result.isSuccess;
-
-  Future<void> onRefreshPressed() async {
-    _setState(
-      WeatherResult.loading(
-        data: _weatherResult.value.data,
-      ),
-    );
-    final result = await _repository.fetchForecast();
-    _setState(result);
-  }
-
-  void _setState(
-    WeatherResult<ForecastData> value,
-  ) {
+  Future<void> loadCurrencies() async {
     runInAction(() {
-      _weatherResult.value = value;
-      if (value.isSuccess) {
-        _lastUpdateDate.value = DateTime.now();
-      }
+      _currencyResult.value = CurrencyResult.loading();
+    });
+    final result = await _repository.fetchRates();
+    runInAction(() {
+      _currencyResult.value = result;
     });
   }
 }

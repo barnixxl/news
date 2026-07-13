@@ -10,7 +10,7 @@ Widget _buildLoadingWidget() {
           height: 16,
         ),
         Text(
-          strings.loading_weather,
+          strings.loading_currencies,
         ),
       ],
     ),

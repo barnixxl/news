@@ -2,23 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../main.dart';
-import '../../models/day_weather.dart';
+import '../../models/currency_error.dart';
+import '../../models/rate_data.dart';
 import '../../resources/colors/app_colors.dart';
-import '../../resources/dimens/app_dimens.dart';
-import '../../resources/images/app_images/app_images.dart';
 import '../../utils/date_formatter.dart';
-import '../common/map_widget/map_view_widget.dart';
+import '../converter_details/converter_details_screen.dart';
 import 'home_controller.dart';
-import 'widgets/day_weather_item_widget.dart';
+import 'widgets/currency_list_item.dart';
 
 part 'home_screen.app_bar_state.part.dart';
-
 part 'home_screen.error_state.part.dart';
-
 part 'home_screen.load_state.part.dart';
-
-part 'home_screen.map_overlay.part.dart';
-
 part 'home_screen.success_state.part.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -36,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    _onRefreshPressed();
+    _loadData();
   }
 
   @override
@@ -47,20 +41,18 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(
-          kToolbarHeight + AppDimens.appBarBottomHeight,
+          kToolbarHeight + 40,
         ),
         child: Observer(
           builder: (_) {
             return _buildAppBarWidget(
-              cityName: homeController.appBarCityName,
               lastUpdateDate: homeController.lastUpdateDate,
-              onMapPressed: _showMapOverlay,
             );
           },
         ),
       ),
       body: RefreshIndicator(
-        onRefresh: _onRefreshPressed,
+        onRefresh: _loadData,
         child: Stack(
           children: [
             Observer(
@@ -76,19 +68,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 return Visibility(
                   visible: homeController.hasError,
                   child: _buildErrorWidget(
-                    errorMessage: homeController.error?.errorMessage,
-                    onRetryPressed: _onRefreshPressed,
+                    error: homeController.error,
+                    onRetryPressed: _loadData,
                   ),
                 );
               },
             ),
             Observer(
               builder: (_) {
-                final dayWeather = homeController.dayWeather;
                 return Visibility(
                   visible: homeController.hasSuccess,
                   child: _buildSuccessWidget(
-                    dayWeather: dayWeather,
+                    currencies: homeController.currencies,
+                    onCurrencyPressed: _navigateToDetail,
                   ),
                 );
               },
@@ -99,23 +91,22 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void _showMapOverlay() {
-    showDialog(
-      context: context,
-      builder: (
-        dialogContext,
-      ) =>
-          _buildMapOverlayWidget(
-        latitude: _homeController.latitude,
-        longitude: _homeController.longitude,
-        onClose: () => Navigator.of(
-          dialogContext,
-        ).pop(),
-      ),
-    );
+  Future<void> _loadData() async {
+    await _homeController.loadCurrencies();
   }
 
-  Future<void> _onRefreshPressed() async {
-    await _homeController.onRefreshPressed();
+  void _navigateToDetail(
+    RateData currency,
+  ) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) {
+          return ConverterDetailsScreen(
+            currency: currency,
+          );
+        },
+      ),
+    );
   }
 }

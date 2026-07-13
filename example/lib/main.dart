@@ -1,15 +1,13 @@
+import 'package:currency_converter/ui/home/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
-import 'network/weather/weather_api.dart';
-import 'network/weather_network.dart';
-import 'repository/weather_repository.dart';
+import 'network/currency/currency_api.dart';
+import 'network/currency_rate_network.dart';
+import 'repository/currency_repository.dart';
 import 'resources/colors/app_colors.dart';
 import 'resources/strings/app_localizations.dart';
-import 'ui/home/home_screen.dart';
-import 'utils/location_service.dart';
 
 late final AppLocalizations strings;
 
@@ -22,9 +20,6 @@ Future<void> initializeLocale() async {
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  try {
-    await dotenv.load();
-  } catch (_) {}
   await initializeLocale();
   strings = lookupAppLocalizations(
     const Locale(
@@ -32,37 +27,28 @@ Future<void> main() async {
     ),
   );
   final getIt = GetIt.instance;
-
-  final weatherNetwork = WeatherNetwork();
-  weatherNetwork.register(
+  final network = CurrencyRateNetwork();
+  network.register(
     getIt,
   );
-  await weatherNetwork.initializeDependencies();
-
-  final weatherApi = WeatherApi();
-  weatherApi.register(
+  await network.initializeDependencies();
+  final api = CurrencyApi();
+  api.register(
     getIt,
   );
-  await weatherApi.initializeDependencies();
-
-  final locationService = LocationService();
-  locationService.register(
-    getIt,
-  );
-
-  final repository = WeatherRepository();
+  await api.initializeDependencies();
+  final repository = CurrencyRepository();
   repository.register(
     getIt,
   );
   await repository.initializeDependencies();
-
   runApp(
-    const WeatherApp(),
+    const MyApp(),
   );
 }
 
-class WeatherApp extends StatelessWidget {
-  const WeatherApp({
+class MyApp extends StatelessWidget {
+  const MyApp({
     super.key,
   });
 

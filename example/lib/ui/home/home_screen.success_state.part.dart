@@ -1,23 +1,24 @@
 part of 'home_screen.dart';
 
 Widget _buildSuccessWidget({
-  required List<DayWeather> dayWeather,
+  required List<RateData> currencies,
+  required void Function(
+    RateData,
+  ) onCurrencyPressed,
 }) {
   return ListView.builder(
     padding: const EdgeInsets.all(
       8,
     ),
-    itemCount: dayWeather.length,
+    itemCount: currencies.length,
     itemBuilder: (
-      _,
+      context,
       index,
     ) {
-      final item = dayWeather[index];
-      return DayWeatherItem(
-        date: item.date,
-        dayMinTemp: item.dayMinTemp,
-        dayMaxTemp: item.dayMaxTemp,
-        hourlyData: item.hourlyData,
+      final currency = currencies[index];
+      return CurrencyListItem(
+        currency: currency,
+        onTap: onCurrencyPressed,
       );
     },
   );

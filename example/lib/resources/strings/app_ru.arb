@@ -1,13 +1,72 @@
 {
   "@@locale": "ru",
-  "home_title": "Прогноз погоды",
-  "loading_weather": "Загрузка прогноза погоды...",
+  "app_title": "Конвертер валют",
+  "home_title": "Курсы валют НБРБ",
+  "updated_at": "Обновлено: {date}",
+  "@updated_at": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "loading_currencies": "Загрузка курсов валют...",
   "error": "Ошибка...",
-  "geo_error": "Нет доступа к геолокации. Включите GPS и попробуйте снова.",
   "retry": "Повторить",
+  "base_currency_name": "Белорусский рубль (BYN)",
+  "exchange_rate": "Курс",
+  "base_cur_code": "BYN",
+  "base_currency": "Базовая валюта",
+  "update_date": "Дата обновления",
   "common_absent_date": "Дата отсутствует",
-  "common_absent_day": "День отсутствует",
-  "common_absent_time": "Время отсутствует",
+  "common_unknown_currency_name": "Неизвестная валюта",
+  "amount_in": "Сумма в {currency}",
+  "@amount_in": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "common_scale_equals_rate_byn": "{scale} {code} = {rate} BYN",
+  "@common_scale_equals_rate_byn": {
+    "placeholders": {
+      "scale": {
+        "type": "int"
+      },
+      "code": {
+        "type": "String"
+      },
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "converted_result": "{amount} {currencyName} ({currencyCode})",
+  "@converted_result": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "currencyName": {
+        "type": "String"
+      },
+      "currencyCode": {
+        "type": "String"
+      }
+    }
+  },
+  "converted_result_reverse": "{amount} {currencyName}",
+  "@converted_result_reverse": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "currencyName": {
+        "type": "String"
+      }
+    }
+  },
   "error_timeout": "Время соединения вышло",
   "error_no_internet": "Проверьте соединение с интернетом",
   "error_server": "Ошибка сервера: {statusCode}",
@@ -29,43 +88,6 @@
   "error_cancelled": "Запрос отменен",
   "error_unknown": "Неизвестная ошибка сети",
   "error_parsing": "Ошибка парсинга данных",
-  "error_no_data": "Нет данных",
-  "error_load_failed": "Ошибка загрузки данных",
-  "error_config": "Ошибка конфигурации приложения",
-  "error_invalid_data": "Ошибка обработки данных",
-  "error_gps_disabled": "Включите GPS в настройках устройства",
-  "error_location_timeout": "Время ожидания геолокации истекло",
-  "common_unknown_city_name": "Неизвестное название города",
-  "current_location": "Текущее местоположение",
-  "temperature_format": "{temp}°C",
-  "@temperature_format": {
-    "placeholders": {
-      "temp": {
-        "type": "String"
-      }
-    }
-  },
-  "temperature_range": "{min}°C - {max}°C",
-  "@temperature_range": {
-    "placeholders": {
-      "min": {
-        "type": "String"
-      },
-      "max": {
-        "type": "String"
-      }
-    }
-  },
-  "app_bar_subtitle": "{cityName} • Обновлено: {date}",
-  "@app_bar_subtitle": {
-    "placeholders": {
-      "cityName": {
-        "type": "String"
-      },
-      "date": {
-        "type": "String"
-      }
-    }
-  },
-  "map_osm_attribution": "© OpenStreetMap contributors"
+  "error_no_data": "Нет закэшированных данных",
+  "error_load_failed": "Ошибка загрузки данных"
 }
