@@ -28,7 +28,7 @@ class NewsItemWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 8),
             child: Text(
-              strings.news_date_format(newsItem.startDate.toDayMonthYearTextDateFormat() ?? ''),
+              strings.home_news_published_at(newsItem.startDate.toDayMonthYearTextDateFormat() ?? ''),
               style: const TextStyle(color: AppColors.primaryGray, fontSize: AppDimens.fontXs),
             ),
           ),
