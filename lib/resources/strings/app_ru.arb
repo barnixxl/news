@@ -28,16 +28,16 @@
   "error_parsing": "Ошибка парсинга данных",
   "error_no_data": "Нет данных",
   "error_load_failed": "Ошибка загрузки данных",
-  "news_date_format": "Опубликовано: {date}",
-  "@news_date_format": {
+  "home_news_published_at": "Опубликовано: {date}",
+  "@home_news_published_at": {
     "placeholders": {
       "date": {
         "type": "String"
       }
     }
   },
-  "app_bar_subtitle": "Новости от {date}",
-  "@app_bar_subtitle": {
+  "home_last_updated_at": "Обновлено: {date}",
+  "@home_last_updated_at": {
     "placeholders": {
       "date": {
         "type": "String"

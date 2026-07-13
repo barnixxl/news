@@ -55,13 +55,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get error_load_failed => 'Ошибка загрузки данных';
 
   @override
-  String news_date_format(String date) {
+  String home_news_published_at(String date) {
     return 'Опубликовано: $date';
   }
 
   @override
-  String app_bar_subtitle(String date) {
-    return 'Новости от $date';
+  String home_last_updated_at(String date) {
+    return 'Обновлено: $date';
   }
 
   @override

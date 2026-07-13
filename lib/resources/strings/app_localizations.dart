@@ -178,17 +178,17 @@ abstract class AppLocalizations {
   /// **'Ошибка загрузки данных'**
   String get error_load_failed;
 
-  /// No description provided for @news_date_format.
+  /// No description provided for @home_news_published_at.
   ///
   /// In ru, this message translates to:
   /// **'Опубликовано: {date}'**
-  String news_date_format(String date);
+  String home_news_published_at(String date);
 
-  /// No description provided for @app_bar_subtitle.
+  /// No description provided for @home_last_updated_at.
   ///
   /// In ru, this message translates to:
-  /// **'Новости от {date}'**
-  String app_bar_subtitle(String date);
+  /// **'Обновлено: {date}'**
+  String home_last_updated_at(String date);
 
   /// No description provided for @read_more.
   ///
