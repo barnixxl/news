@@ -44,5 +44,6 @@
         "type": "String"
       }
     }
-  }
+  },
+  "read_more": "Читать"
 }

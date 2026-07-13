@@ -66,4 +66,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String app_bar_subtitle(String date) {
     return 'Обновлено: $date';
   }
+
+  @override
+  String get read_more => 'Читать';
 }

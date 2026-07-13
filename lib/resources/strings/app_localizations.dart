@@ -195,6 +195,12 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Обновлено: {date}'**
   String app_bar_subtitle(String date);
+
+  /// No description provided for @read_more.
+  ///
+  /// In ru, this message translates to:
+  /// **'Читать'**
+  String get read_more;
 }
 
 class _AppLocalizationsDelegate
