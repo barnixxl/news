@@ -10,9 +10,9 @@ import '../../common/app_card/app_card_widget.dart';
 
 class NewsItemWidget extends StatelessWidget {
   final NewsItem newsItem;
-  final void Function(String)? onLinkPressed;
+  final void Function(String) onLinkPressed;
 
-  const NewsItemWidget({super.key, required this.newsItem, this.onLinkPressed});
+  const NewsItemWidget({super.key, required this.newsItem, required this.onLinkPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class NewsItemWidget extends StatelessWidget {
           Align(
             alignment: Alignment.centerRight,
             child: TextButton.icon(
-              onPressed: () => onLinkPressed?.call(newsItem.link),
+              onPressed: () => onLinkPressed.call(newsItem.link),
               icon: Image.asset(
                 AppImages.icOpenInNew,
                 width: AppDimens.iconXs,
