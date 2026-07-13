@@ -38,7 +38,9 @@ class HomeController {
       ),
     );
     final result = await _repository.fetchNews();
-    _setState(result);
+    _setState(
+      result,
+    );
   }
 
   void _setState(
