@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../main.dart';
 import '../../models/news_item.dart';
@@ -19,9 +20,7 @@ part 'home_screen.load_state.part.dart';
 part 'home_screen.success_state.part.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({
-    super.key,
-  });
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -37,20 +36,14 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
-  Widget build(
-    BuildContext context,
-  ) {
+  Widget build(BuildContext context) {
     final homeController = _homeController;
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(
-          kToolbarHeight + AppDimens.appBarBottomHeight,
-        ),
+        preferredSize: const Size.fromHeight(kToolbarHeight + AppDimens.appBarBottomHeight),
         child: Observer(
           builder: (_) {
-            return _buildAppBarWidget(
-              lastUpdateDate: homeController.lastUpdateDate,
-            );
+            return _buildAppBarWidget(lastUpdateDate: homeController.lastUpdateDate);
           },
         ),
       ),
@@ -60,10 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Observer(
               builder: (_) {
-                return Visibility(
-                  visible: homeController.isLoading,
-                  child: _buildLoadingWidget(),
-                );
+                return Visibility(visible: homeController.isLoading, child: _buildLoadingWidget());
               },
             ),
             Observer(
@@ -82,9 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 final news = homeController.news;
                 return Visibility(
                   visible: homeController.hasSuccess,
-                  child: _buildSuccessWidget(
-                    news: news,
-                  ),
+                  child: _buildSuccessWidget(news: news, onLinkPressed: _openLink),
                 );
               },
             ),
@@ -96,5 +84,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _onRefreshPressed() async {
     await _homeController.onRefreshPressed();
+  }
+
+  Future<void> _openLink(String link) async {
+    final uri = Uri.tryParse(link);
+    if (uri != null && await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
   }
 }
