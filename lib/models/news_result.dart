@@ -5,8 +5,6 @@ class NewsResult<T> {
   final NewsError? error;
   final Status status;
 
-  NewsResult.notInitialized() : data = null, error = null, status = Status.notInitialized;
-
   NewsResult.loading({this.data}) : error = null, status = Status.loading;
 
   NewsResult.success(this.data) : error = null, status = Status.success;
@@ -22,8 +20,6 @@ class NewsResult<T> {
   @override
   String toString() {
     switch (status) {
-      case Status.notInitialized:
-        return 'NewsResult.notInitialized';
       case Status.loading:
         return 'NewsResult.loading(data: $data)';
       case Status.success:
@@ -34,4 +30,4 @@ class NewsResult<T> {
   }
 }
 
-enum Status { notInitialized, loading, success, failure }
+enum Status { loading, success, failure }
