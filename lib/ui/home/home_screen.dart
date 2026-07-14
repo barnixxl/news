@@ -39,10 +39,14 @@ class _HomeScreenState extends State<HomeScreen> {
     final homeController = _homeController;
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight + AppDimens.appBarBottomHeight),
+        preferredSize: const Size.fromHeight(
+          kToolbarHeight + AppDimens.appBarBottomHeight,
+        ),
         child: Observer(
           builder: (_) {
-            return _buildAppBarWidget(lastUpdateDate: homeController.lastFetchedAt);
+            return _buildAppBarWidget(
+              lastUpdateDate: homeController.lastFetchedAt,
+            );
           },
         ),
       ),
@@ -52,7 +56,10 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Observer(
               builder: (_) {
-                return Visibility(visible: homeController.isLoading, child: _buildLoadingWidget());
+                return Visibility(
+                  visible: homeController.isLoading,
+                  child: _buildLoadingWidget(),
+                );
               },
             ),
             Observer(
@@ -71,7 +78,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 final news = homeController.news;
                 return Visibility(
                   visible: homeController.hasSuccess,
-                  child: _buildSuccessWidget(news: news, onLinkPressed: _openLink),
+                  child: _buildSuccessWidget(
+                    news: news,
+                    onLinkPressed: _openLink,
+                  ),
                 );
               },
             ),

@@ -15,9 +15,15 @@ class NewsItemFromNetwork {
 
   final String? link;
 
-  NewsItemFromNetwork({this.nameRu, this.isTechnicalWork, this.startDate, this.link});
+  NewsItemFromNetwork({
+    this.nameRu,
+    this.isTechnicalWork,
+    this.startDate,
+    this.link,
+  });
 
-  factory NewsItemFromNetwork.fromJson(Map<String, dynamic> json) => _$NewsItemFromNetworkFromJson(json);
+  factory NewsItemFromNetwork.fromJson(Map<String, dynamic> json) =>
+      _$NewsItemFromNetworkFromJson(json);
 
   @override
   String toString() =>

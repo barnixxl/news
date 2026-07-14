@@ -1,6 +1,9 @@
 part of 'home_screen.dart';
 
-Widget _buildErrorWidget({required String? errorMessage, required void Function() onRetryPressed}) {
+Widget _buildErrorWidget({
+  required String? errorMessage,
+  required void Function() onRetryPressed,
+}) {
   return Center(
     child: Padding(
       padding: const EdgeInsets.all(16),

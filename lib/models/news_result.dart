@@ -5,7 +5,10 @@ class NewsResult<T> {
   final NewsError? error;
   final Status status;
 
-  NewsResult.notInitialized() : data = null, error = null, status = Status.notInitialized;
+  NewsResult.notInitialized()
+    : data = null,
+      error = null,
+      status = Status.notInitialized;
 
   NewsResult.loading({this.data}) : error = null, status = Status.loading;
 

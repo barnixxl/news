@@ -9,7 +9,9 @@ import '../../repository/news_repository.dart';
 class HomeController {
   final NewsRepository _repository = NewsRepository.getInstance();
 
-  final Observable<NewsResult<List<NewsItem>>> _newsResult = Observable(NewsResult.notInitialized());
+  final Observable<NewsResult<List<NewsItem>>> _newsResult = Observable(
+    NewsResult.notInitialized(),
+  );
 
   final Observable<DateTime?> _lastFetchedAt = Observable(null);
 

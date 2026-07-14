@@ -26,7 +26,10 @@ class NewsApi {
   }
 
   Future<NewsResult<List<NewsItem>>> fetchNews() async {
-    final result = await _network.get<List<dynamic>>('news_info', queryParameters: _buildQueryParams());
+    final result = await _network.get<List<dynamic>>(
+      'news_info',
+      queryParameters: _buildQueryParams(),
+    );
     return _processNetworkResult(result);
   }
 
@@ -34,7 +37,9 @@ class NewsApi {
     return {'lang': AppConfig.language};
   }
 
-  NewsResult<List<NewsItem>> _processNetworkResult(NewsResult<List<dynamic>> result) {
+  NewsResult<List<NewsItem>> _processNetworkResult(
+    NewsResult<List<dynamic>> result,
+  ) {
     if (result.isSuccess) {
       return _parseNewsData(result.data ?? const []);
     }
@@ -43,7 +48,9 @@ class NewsApi {
 
   NewsResult<List<NewsItem>> _parseNewsData(List<dynamic> data) {
     try {
-      final items = data.map((e) => NewsItemFromNetwork.fromJson(e as Map<String, dynamic>)).toList();
+      final items = data
+          .map((e) => NewsItemFromNetwork.fromJson(e as Map<String, dynamic>))
+          .toList();
       if (items.isNotEmpty) {
         return NewsResult.success(NewsItem.fromNetworkList(items));
       }

@@ -7,7 +7,12 @@ class NewsItem {
   final String link;
   final bool isTechnicalWork;
 
-  const NewsItem({required this.title, this.startDate, required this.link, this.isTechnicalWork = false});
+  const NewsItem({
+    required this.title,
+    this.startDate,
+    required this.link,
+    this.isTechnicalWork = false,
+  });
 
   static NewsItem fromNetworkModel(NewsItemFromNetwork item) {
     return NewsItem(
@@ -19,6 +24,8 @@ class NewsItem {
   }
 
   static List<NewsItem> fromNetworkList(List<NewsItemFromNetwork> items) {
-    return items.map((e) => NewsItem.fromNetworkModel(e)).toList();
+    return items.map(
+      (e) => NewsItem.fromNetworkModel(e),
+    ).toList();
   }
 }

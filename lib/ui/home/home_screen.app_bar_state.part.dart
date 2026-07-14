@@ -15,9 +15,13 @@ Widget _buildAppBarWidget({required DateTime? lastUpdateDate}) {
           children: [
             Text(
               strings.home_last_updated_at(
-                lastUpdateDate?.toDayMonthYearTextDateFormat() ?? strings.common_absent_date,
+                lastUpdateDate?.toDayMonthYearTextDateFormat() ??
+                    strings.common_absent_date,
               ),
-              style: const TextStyle(color: AppColors.onPrimary, fontSize: AppDimens.fontXs),
+              style: const TextStyle(
+                color: AppColors.onPrimary,
+                fontSize: AppDimens.fontXs,
+              ),
             ),
           ],
         ),

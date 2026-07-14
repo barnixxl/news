@@ -1,6 +1,9 @@
 part of 'home_screen.dart';
 
-Widget _buildSuccessWidget({required List<NewsItem> news, required void Function(String) onLinkPressed}) {
+Widget _buildSuccessWidget({
+  required List<NewsItem> news,
+  required void Function(String) onLinkPressed,
+}) {
   return ListView.builder(
     padding: const EdgeInsets.all(8),
     itemCount: news.length,

@@ -23,7 +23,9 @@ class AppCardWidget extends StatelessWidget {
       margin: margin,
       elevation: 0,
       color: AppColors.primaryLight,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppDimens.radiusMd)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppDimens.radiusMd),
+      ),
       clipBehavior: clipContent ? Clip.antiAlias : Clip.none,
       child: Padding(padding: padding, child: child),
     );
