@@ -6,8 +6,12 @@ Widget _buildLoadingWidget() {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const CircularProgressIndicator(),
-        const SizedBox(height: 16),
-        Text(strings.loading_news),
+        const SizedBox(
+          height: 16,
+        ),
+        Text(
+          strings.loading_news,
+        ),
       ],
     ),
   );

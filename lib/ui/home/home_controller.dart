@@ -13,7 +13,9 @@ class HomeController {
     NewsResult.notInitialized(),
   );
 
-  final Observable<DateTime?> _lastFetchedAt = Observable(null);
+  final Observable<DateTime?> _lastFetchedAt = Observable(
+    null,
+  );
 
   List<NewsItem> get news => _newsResult.value.data ?? [];
 
@@ -28,19 +30,35 @@ class HomeController {
   bool get hasSuccess => _newsResult.value.isSuccess;
 
   Future<void> loadNews() async {
-    _setState(NewsResult.loading(data: _newsResult.value.data));
+    _setState(
+      NewsResult.loading(
+        data: _newsResult.value.data,
+      ),
+    );
     final result = await _repository.fetchNews();
     _setState(result);
   }
 
-  Future<void> openLink(String link) async {
-    final uri = Uri.tryParse(link);
-    if (uri != null && await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
+  Future<void> openLink(
+      String link,
+      ) async {
+    final uri = Uri.tryParse(
+      link,
+    );
+    if (uri != null &&
+        await canLaunchUrl(
+          uri,
+        )) {
+      await launchUrl(
+        uri,
+        mode: LaunchMode.externalApplication,
+      );
     }
   }
 
-  void _setState(NewsResult<List<NewsItem>> value) {
+  void _setState(
+      NewsResult<List<NewsItem>> value,
+      ) {
     runInAction(() {
       _newsResult.value = value;
       if (value.isSuccess) {

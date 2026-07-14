@@ -11,7 +11,9 @@ class NewsNetwork {
   late final Dio _dio;
 
   void register(GetIt getIt) {
-    getIt.registerSingleton<NewsNetwork>(this);
+    getIt.registerSingleton<NewsNetwork>(
+      this,
+    );
   }
 
   static NewsNetwork getInstance() {
@@ -22,32 +24,66 @@ class NewsNetwork {
     _dio = Dio(
       BaseOptions(
         baseUrl: AppConfig.baseUrl,
-        connectTimeout: const Duration(seconds: 20),
-        receiveTimeout: const Duration(seconds: 20),
-        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        connectTimeout: const Duration(
+          seconds: 20,
+        ),
+        receiveTimeout: const Duration(
+          seconds: 20,
+        ),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
       ),
     );
     if (kDebugMode) {
-      _dio.interceptors.add(LogInterceptor(request: false, requestBody: true, responseBody: true, error: true));
+      _dio.interceptors.add(
+        LogInterceptor(
+          request: false,
+          requestBody: true,
+          responseBody: true,
+          error: true,
+        ),
+      );
     }
   }
 
-  Future<NewsResult<T>> get<T>(String path, {Map<String, dynamic>? queryParameters}) async {
+  Future<NewsResult<T>> get<T>(
+      String path, {
+        Map<String, dynamic>? queryParameters,
+      }) async {
     try {
-      final response = await _dio.get<T>(path, queryParameters: queryParameters);
+      final response = await _dio.get<T>(
+        path,
+        queryParameters: queryParameters,
+      );
       final data = response.data;
       if (data != null) {
-        return NewsResult.success(data);
+        return NewsResult.success(
+          data,
+        );
       }
-      return NewsResult.failure(NewsError.loadFailed());
+      return NewsResult.failure(
+        NewsError.loadFailed(),
+      );
     } on DioException catch (e) {
-      return NewsResult.failure(_mapDioError(e));
+      return NewsResult.failure(
+        _mapDioError(
+          e,
+        ),
+      );
     } catch (e) {
-      return NewsResult.failure(NewsError.fromException(e));
+      return NewsResult.failure(
+        NewsError.fromException(
+          e,
+        ),
+      );
     }
   }
 
-  NewsError _mapDioError(DioException e) {
+  NewsError _mapDioError(
+      DioException e,
+      ) {
     switch (e.type) {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:
@@ -58,9 +94,13 @@ class NewsNetwork {
       case DioExceptionType.badResponse:
         final statusCode = e.response?.statusCode ?? 0;
         if (statusCode >= 500) {
-          return NewsError.serverError(statusCode);
+          return NewsError.serverError(
+            statusCode,
+          );
         }
-        return NewsError.badResponse(statusCode);
+        return NewsError.badResponse(
+          statusCode,
+        );
       case DioExceptionType.cancel:
         return NewsError.cancelled();
       case DioExceptionType.connectionError:

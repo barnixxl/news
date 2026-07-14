@@ -11,8 +11,12 @@ class NewsRepository extends BaseRepository {
   late final NewsApi _newsApi;
 
   @override
-  void register(GetIt getIt) {
-    getIt.registerSingleton<NewsRepository>(this);
+  void register(
+      GetIt getIt,
+      ) {
+    getIt.registerSingleton<NewsRepository>(
+      this,
+    );
   }
 
   @override
@@ -27,23 +31,41 @@ class NewsRepository extends BaseRepository {
   Future<NewsResult<List<NewsItem>>> fetchNews() async {
     final result = await _newsApi.fetchNews();
     if (result.isSuccess) {
-      return NewsResult.success(_filterAndSortByDate(result.data));
+      return NewsResult.success(
+        _filterAndSortByDate(
+          result.data,
+        ),
+      );
     }
     return result;
   }
 
-  List<NewsItem> _filterAndSortByDate(List<NewsItem>? items) {
+  List<NewsItem> _filterAndSortByDate(
+      List<NewsItem>? items,
+      ) {
     if (items != null) {
-      final filtered = items.where(_isValidNewsItem).toList();
-      filtered.sort(_byDateDesc);
+      final filtered = items
+          .where(
+        _isValidNewsItem,
+      )
+          .toList();
+      filtered.sort(
+        _byDateDesc,
+      );
       return filtered;
     }
     return [];
   }
 
-  bool _isValidNewsItem(NewsItem item) => item.link.isNotEmpty && !item.isTechnicalWork;
+  bool _isValidNewsItem(
+      NewsItem item,
+      ) =>
+      item.link.isNotEmpty && !item.isTechnicalWork;
 
-  int _byDateDesc(NewsItem a, NewsItem b) {
+  int _byDateDesc(
+      NewsItem a,
+      NewsItem b,
+      ) {
     final aDt = a.startDate;
     final bDt = b.startDate;
     if (aDt == null && bDt == null) {
@@ -55,6 +77,8 @@ class NewsRepository extends BaseRepository {
     if (bDt == null) {
       return -1;
     }
-    return bDt.compareTo(aDt);
+    return bDt.compareTo(
+      aDt,
+    );
   }
 }

@@ -2,7 +2,9 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'news_item_from_network.g.dart';
 
-@JsonSerializable(createToJson: false)
+@JsonSerializable(
+  createToJson: false,
+)
 class NewsItemFromNetwork {
   @JsonKey(name: 'name_ru')
   final String? nameRu;
@@ -22,12 +24,15 @@ class NewsItemFromNetwork {
     this.link,
   });
 
-  factory NewsItemFromNetwork.fromJson(Map<String, dynamic> json) =>
-      _$NewsItemFromNetworkFromJson(json);
+  factory NewsItemFromNetwork.fromJson(
+      Map<String, dynamic> json,
+      ) =>
+      _$NewsItemFromNetworkFromJson(
+        json,
+      );
 
   @override
-  String toString() =>
-      'NewsItemFromNetwork('
+  String toString() => 'NewsItemFromNetwork('
       'nameRu: $nameRu,'
       'isTechnicalWork: $isTechnicalWork,'
       'startDate: $startDate,'

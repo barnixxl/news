@@ -6,7 +6,9 @@ Widget _buildErrorWidget({
 }) {
   return Center(
     child: Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(
+        16,
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -16,14 +18,25 @@ Widget _buildErrorWidget({
             height: AppDimens.iconXl,
             color: AppColors.error,
           ),
-          const SizedBox(height: 16),
+          const SizedBox(
+            height: 16,
+          ),
           Text(
             errorMessage ?? strings.error,
             textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: AppDimens.fontMd),
+            style: const TextStyle(
+              fontSize: AppDimens.fontMd,
+            ),
           ),
-          const SizedBox(height: 16),
-          ElevatedButton(onPressed: onRetryPressed, child: Text(strings.retry)),
+          const SizedBox(
+            height: 16,
+          ),
+          ElevatedButton(
+            onPressed: onRetryPressed,
+            child: Text(
+              strings.retry,
+            ),
+          ),
         ],
       ),
     ),

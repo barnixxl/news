@@ -14,7 +14,9 @@ class NewsItem {
     this.isTechnicalWork = false,
   });
 
-  static NewsItem fromNetworkModel(NewsItemFromNetwork item) {
+  static NewsItem fromNetworkModel(
+      NewsItemFromNetwork item,
+      ) {
     return NewsItem(
       title: item.nameRu ?? '',
       startDate: item.startDate.toDayMonthYearDateParse(),
@@ -23,9 +25,13 @@ class NewsItem {
     );
   }
 
-  static List<NewsItem> fromNetworkList(List<NewsItemFromNetwork> items) {
-    return items.map(
-      (e) => NewsItem.fromNetworkModel(e),
-    ).toList();
+  static List<NewsItem> fromNetworkList(
+      List<NewsItemFromNetwork> items,
+      ) {
+    return items
+        .map(
+          (e) => NewsItem.fromNetworkModel(e),
+    )
+        .toList();
   }
 }

@@ -24,8 +24,8 @@ class NewsError {
   String toString() => errorMessage;
 
   factory NewsError.fromException(
-    Object e,
-  ) {
+      Object e,
+      ) {
     if (e is NewsError) {
       return e;
     }
@@ -36,18 +36,18 @@ class NewsError {
   }
 
   factory NewsError.timeout() => NewsError(
-        errorCode: timeoutCode,
-        errorMessage: strings.error_timeout,
-      );
+    errorCode: timeoutCode,
+    errorMessage: strings.error_timeout,
+  );
 
   factory NewsError.noInternet() => NewsError(
-        errorCode: noInternetCode,
-        errorMessage: strings.error_no_internet,
-      );
+    errorCode: noInternetCode,
+    errorMessage: strings.error_no_internet,
+  );
 
   factory NewsError.serverError(
-    int statusCode,
-  ) =>
+      int statusCode,
+      ) =>
       NewsError(
         errorCode: serverCode,
         errorMessage: strings.error_server(
@@ -56,8 +56,8 @@ class NewsError {
       );
 
   factory NewsError.badResponse(
-    int statusCode,
-  ) =>
+      int statusCode,
+      ) =>
       NewsError(
         errorCode: badResponseCode,
         errorMessage: strings.error_bad_response(
@@ -66,32 +66,32 @@ class NewsError {
       );
 
   factory NewsError.badCertificate() => NewsError(
-        errorCode: badCertificateCode,
-        errorMessage: strings.error_bad_certificate,
-      );
+    errorCode: badCertificateCode,
+    errorMessage: strings.error_bad_certificate,
+  );
 
   factory NewsError.cancelled() => NewsError(
-        errorCode: cancelledCode,
-        errorMessage: strings.error_cancelled,
-      );
+    errorCode: cancelledCode,
+    errorMessage: strings.error_cancelled,
+  );
 
   factory NewsError.unknown() => NewsError(
-        errorCode: unknownCode,
-        errorMessage: strings.error_unknown,
-      );
+    errorCode: unknownCode,
+    errorMessage: strings.error_unknown,
+  );
 
   factory NewsError.parsing() => NewsError(
-        errorCode: parsingCode,
-        errorMessage: strings.error_parsing,
-      );
+    errorCode: parsingCode,
+    errorMessage: strings.error_parsing,
+  );
 
   factory NewsError.noData() => NewsError(
-        errorCode: noDataCode,
-        errorMessage: strings.error_no_data,
-      );
+    errorCode: noDataCode,
+    errorMessage: strings.error_no_data,
+  );
 
   factory NewsError.loadFailed() => NewsError(
-        errorCode: loadFailedCode,
-        errorMessage: strings.error_load_failed,
-      );
+    errorCode: loadFailedCode,
+    errorMessage: strings.error_load_failed,
+  );
 }
