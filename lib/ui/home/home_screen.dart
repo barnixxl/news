@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
         preferredSize: const Size.fromHeight(kToolbarHeight + AppDimens.appBarBottomHeight),
         child: Observer(
           builder: (_) {
-            return _buildAppBarWidget(lastUpdateDate: homeController.lastUpdateDate);
+            return _buildAppBarWidget(lastUpdateDate: homeController.lastFetchedAt);
           },
         ),
       ),
