@@ -13,7 +13,7 @@ class NewsItemFromNetwork {
   final bool? isTechnicalWork;
 
   @JsonKey(name: 'start_date')
-  final DateTime? startDate;
+  final String? startDate;
 
   final String? link;
 
