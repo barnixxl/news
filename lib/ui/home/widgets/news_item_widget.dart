@@ -12,7 +12,11 @@ class NewsItemWidget extends StatelessWidget {
   final NewsItem newsItem;
   final void Function(String) onLinkPressed;
 
-  const NewsItemWidget({super.key, required this.newsItem, required this.onLinkPressed});
+  const NewsItemWidget({
+    super.key,
+    required this.newsItem,
+    required this.onLinkPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +27,22 @@ class NewsItemWidget extends StatelessWidget {
         children: [
           Text(
             newsItem.title,
-            style: const TextStyle(color: AppColors.primary, fontSize: AppDimens.fontMd, fontWeight: FontWeight.bold),
+            style: const TextStyle(
+              color: AppColors.primary,
+              fontSize: AppDimens.fontMd,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8),
             child: Text(
-              strings.home_news_published_at(newsItem.startDate.toDayMonthYearTextDateFormat() ?? ''),
-              style: const TextStyle(color: AppColors.primaryGray, fontSize: AppDimens.fontXs),
+              strings.home_news_published_at(
+                newsItem.startDate.toDayMonthYearTextDateFormat() ?? '',
+              ),
+              style: const TextStyle(
+                color: AppColors.primaryGray,
+                fontSize: AppDimens.fontXs,
+              ),
             ),
           ),
           const SizedBox(height: 12),

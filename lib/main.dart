@@ -22,21 +22,15 @@ Future<void> main() async {
   final getIt = GetIt.instance;
 
   final newsNetwork = NewsNetwork();
-  newsNetwork.register(
-    getIt,
-  );
+  newsNetwork.register(getIt);
   await newsNetwork.initializeDependencies();
 
   final newsApi = NewsApi();
-  newsApi.register(
-    getIt,
-  );
+  newsApi.register(getIt);
   await newsApi.initializeDependencies();
 
   final repository = NewsRepository();
-  repository.register(
-    getIt,
-  );
+  repository.register(getIt);
   await repository.initializeDependencies();
 
   runApp(const NewsApp());

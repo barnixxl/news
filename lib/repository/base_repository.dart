@@ -1,9 +1,7 @@
 import 'package:get_it/get_it.dart';
 
 abstract class BaseRepository {
-  void register(
-    GetIt getIt,
-  );
+  void register(GetIt getIt);
 
   Future<void> initializeDependencies();
 }
