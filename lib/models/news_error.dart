@@ -15,6 +15,7 @@ class NewsError {
   static const int parsingCode = 6;
   static const int noDataCode = 7;
   static const int loadFailedCode = 8;
+  static const int badCertificateCode = 9;
 
   @override
   String toString() => errorMessage;
@@ -35,6 +36,9 @@ class NewsError {
 
   factory NewsError.badResponse(int statusCode) =>
       NewsError(errorCode: badResponseCode, errorMessage: strings.error_bad_response(statusCode));
+
+  factory NewsError.badCertificate() =>
+      NewsError(errorCode: badCertificateCode, errorMessage: strings.error_bad_certificate);
 
   factory NewsError.cancelled() => NewsError(errorCode: cancelledCode, errorMessage: strings.error_cancelled);
 
