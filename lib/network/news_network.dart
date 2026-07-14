@@ -54,7 +54,7 @@ class NewsNetwork {
       case DioExceptionType.receiveTimeout:
         return NewsError.timeout();
       case DioExceptionType.badCertificate:
-        return NewsError.badResponse(0);
+        return NewsError.badCertificate();
       case DioExceptionType.badResponse:
         final statusCode = e.response?.statusCode ?? 0;
         if (statusCode >= 500) {
