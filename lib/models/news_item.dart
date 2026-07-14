@@ -1,4 +1,5 @@
 import '../network/news/resp/news_item_from_network.dart';
+import '../utils/string_extensions.dart';
 
 class NewsItem {
   final String title;
@@ -11,7 +12,7 @@ class NewsItem {
   static NewsItem fromNetworkModel(NewsItemFromNetwork item) {
     return NewsItem(
       title: item.nameRu ?? '',
-      startDate: item.startDate,
+      startDate: item.startDate.toDayMonthYearDateParse(),
       link: item.link ?? '',
       isTechnicalWork: item.isTechnicalWork ?? false,
     );
