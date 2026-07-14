@@ -43,6 +43,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get error_cancelled => 'Запрос отменен';
 
   @override
+  String get error_bad_certificate =>
+      'Небезопасное соединение (проблема сертификата)';
+
+  @override
   String get error_unknown => 'Неизвестная ошибка сети';
 
   @override

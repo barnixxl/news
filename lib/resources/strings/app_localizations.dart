@@ -154,6 +154,12 @@ abstract class AppLocalizations {
   /// **'Запрос отменен'**
   String get error_cancelled;
 
+  /// No description provided for @error_bad_certificate.
+  ///
+  /// In ru, this message translates to:
+  /// **'Небезопасное соединение (проблема сертификата)'**
+  String get error_bad_certificate;
+
   /// No description provided for @error_unknown.
   ///
   /// In ru, this message translates to:
